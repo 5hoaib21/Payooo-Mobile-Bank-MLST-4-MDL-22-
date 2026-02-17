@@ -1,9 +1,39 @@
 document.getElementById("cashout-btn").addEventListener('click',  function(){
   // get the agent num && validate
-  //get the amount , validate, convert to number
-  //get the current balance , validate, convert to number
-  // get calculate new balance 
+const cashoutNumberInput =  document.getElementById('cashout-number');
+const cashoutNumber = cashoutNumberInput.value ;
+console.log(cashoutNumber);
+if(cashoutNumber.length !=11){
+  alert('invalid Agent Number')
+  return;
+}
+
+  //get the amount 
+  const cashoutAmountInput = document.getElementById('cashout-amount');
+  const cashoutAmount = cashoutAmountInput.value;
+  console.log(cashoutAmount);
+  //get the current balance 
+  const balanceElement = document.getElementById('balance')
+  const balance = balanceElement.innerText ;
+  console.log(balance);
+  // calculate new balance 
+  const newBalance = Number(balance) - Number(cashoutAmount);
+  if(newBalance < 0){
+    alert('Invalid Amount')
+    return;
+  }
+  console.log(`New Balance is:`, newBalance);
   // get the pin && verify
-  // isTrue :: show an alert > set balance 
-  // isFalse :: show an error alert > return
+  const cashoutPinInput = document.getElementById('cashout-pin');
+  const pin = cashoutPinInput.value;
+  if(pin === '1234'){
+    // isTrue :: show an alert > set balance 
+    alert('cashout successful');
+    console.log('new balance:', newBalance);
+    balanceElement.innerText = newBalance;
+  }else{
+    // isFalse :: show an error alert > return
+    alert('invalid pin')
+    return;
+  }
 })
