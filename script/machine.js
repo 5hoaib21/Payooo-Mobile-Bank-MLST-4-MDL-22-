@@ -8,3 +8,18 @@ function getValueFromInput(id){
   console.log(id, value);
   return value;
 }
+// machine -> balance
+
+function getBalance(){
+  const balanceElement = document.getElementById('balance')
+  const balance = balanceElement.innerText;
+  console.log('current balance:', balance);
+  return Number(balance);
+}
+
+
+// machine set balance 
+function setBalance(value){
+const balanceElement = document.getElementById('balance');
+balanceElement.innerText = value;
+}
